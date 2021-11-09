@@ -126,8 +126,9 @@ class Verification(commands.Cog):
 # get school email from user #
 
 
-# email code #
+# email a code to user # 
 
+### THIS IS SO STUDENTS CAN RECIVE EMAILS IN DISCORD SINCE THEY DONT CHECK THEIR EMAIL ###
 
 # get code from user #
 
