@@ -5,7 +5,7 @@ from discord import Color as col
 import asyncio
 
 global Role_Message_ID
-from _variables_ import Role_Message_ID
+from bot import Role_Message_ID
 
 global GUILD
 GUILD = None
