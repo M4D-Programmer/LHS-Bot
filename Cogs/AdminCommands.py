@@ -131,11 +131,11 @@ class AdminCommands(commands.Cog):
     @commands.command()
     @commands.has_permissions(kick_members=True)
     async def mute(self, ctx, *, member: commands.MemberConverter):
-        print("Getting roles")
+        #print("Getting roles")
         roles_list = discord.utils.get(ctx.guild.roles)
-        print(roles_list)
+        #print(roles_list)
         muted_role = discord.utils.get(ctx.guild.role, name='Muted')
-        print("muting")
+        #print("muting")
         await member.add_roles(muted_role)
 
         await ctx.send(f"{member.mention} has been muted")
