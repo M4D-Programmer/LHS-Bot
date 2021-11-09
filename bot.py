@@ -3,13 +3,14 @@ import discord
 from discord.ext import commands, tasks
 import random
 import os
+import asyncio
 from itertools import cycle
 import json
 import logging
 from datetime import datetime
 
-global version
-version = "0.1.0"
+global _version_
+_version_ = "0.1.0"
 
 global OPEN_DATE_ACTIVE
 OPEN_DATE_ACTIVE = True
@@ -261,40 +262,58 @@ for filename in os.listdir('./Cogs'):
 @client.command(hidden=True)
 @commands.check(is_it_me)
 async def update(ctx):
-    message = await ctx.send(f"Updating..")
+    global _version_
+    message = await ctx.send(f"Updating...")
     async with ctx.typing():
         try:
+            for i in range(120):
+                await asyncio.sleep(1)
+                await message.edit(content=f"Waiting... [{120-i}]")
             await message.edit(content="[          ]")
             for filename in os.listdir('./Cogs'):
                 if filename.endswith('.py'):
                     client.unload_extension(f'Cogs.{filename[:-3]}')
                     cogs_loaded.remove(filename[:-3])
             await message.edit(content="[█         ]")
-            with requests.get("https://github.com/M4D-Programmer/LHS-Bot") as rq:
-                print(rq.headers)
-                print(rq.content)
-                with open('', 'wb') as file:
-                    file.write()
+            with requests.get("https://raw.githubusercontent.com/M4D-Programmer/LHS-Bot/main/__version__.py") as rq:
+                with open('__version__.py', 'wb') as file:
+                    file.write(rq.content)
+                    file.close()
             await message.edit(content="[██        ]")
-            
-            await message.edit(content="[███       ]")
-            
-            await message.edit(content="[████      ]")
-            
-            await message.edit(content="[█████     ]")
-            
-            await message.edit(content="[██████    ]")
-            
+            x = 0
+            from __version__ import author, version, Msg, Cogs
+            print(f"Updatting from {_version_} to {version}")
+            await ctx.send(f"Updatting from {_version_} to {version}")
+            for Cog in Cogs:
+                with requests.get(f"https://raw.githubusercontent.com/M4D-Programmer/LHS-Bot/main/Cogs/{Cog}.py") as rq:
+                    with open(f'Cogs/{Cog}.py', 'wb') as file:
+                        file.write(rq.content)
+                        file.close()
+                x += 1
+                if x == 3:
+                    await message.edit(content="[███       ]")
+                if x == 6:
+                    await message.edit(content="[████      ]")
+                if x == 9:
+                    await message.edit(content="[█████     ]")
+                if x == 12:
+                    await message.edit(content="[██████    ]")
             await message.edit(content="[███████   ]")
-            
+            if _version_ != version:
+                _version_ = version
             await message.edit(content="[████████  ]")
-            
+            if Msg != "":
+                channel = client.get_channel(893904274709422170)
+                await channel.send(f"{Msg}")
             await message.edit(content="[█████████ ]")
-            
+            for filename in os.listdir('./Cogs'):
+                if filename.endswith('.py'):
+                    client.load_extension(f'Cogs.{filename[:-3]}')
+                    cogs_loaded.append(filename[:-3])
             await message.edit(content="[██████████]")
                 # RECV FILES IN COGS, CHECK DIFFERENCE (SERVER DOESN'T HAVE FILE THAT CLIENT DOES), REWRITE ALL FILES AND CREATE NEW ONES TO WRITE #
         except Exception as E:
             await ctx.send(f"{E}")
 
-client.run('')
+client.run('Njk0NTg5MzUwNzMzODA3NjY2.XoN0vg.C91g_ldLtyLNgceRvnqm9StvakA')
 
