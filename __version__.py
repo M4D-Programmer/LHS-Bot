@@ -1,7 +1,7 @@
 author = "M4D-Programmer"
 version = "0.9.6"
 
-Msg = f"WooHoo!!"
+Msg = f""
 
 Cogs = ["8Ball", "AdminCommands", 
         "Basic", "Bot-to-Bot", 
