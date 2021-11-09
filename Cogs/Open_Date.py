@@ -25,8 +25,8 @@ class Open_Date(commands.Cog):
         global OPEN_DATE_ACTIVE
         if OPEN_DATE_ACTIVE == True:
             date = datetime.datetime.now().date()
-            print(date)
-            print(DATE)
+            #print(date)
+            #print(DATE)
             if str(date) == DATE:
                 server = self.client.get_guild(831170627901587466)
                 role = discord.utils.get(server.roles, name=f"{DATE}")
