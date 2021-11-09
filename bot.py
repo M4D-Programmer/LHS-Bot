@@ -296,5 +296,5 @@ async def update(ctx):
         except Exception as E:
             await ctx.send(f"{E}")
 
-client.run('Njk0NTg5MzUwNzMzODA3NjY2.XoN0vg.ZO2ysd-MeZkH5nsGACeEA8gAHrE')
+client.run('')
 
