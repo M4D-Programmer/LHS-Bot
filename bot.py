@@ -10,7 +10,7 @@ import logging
 from datetime import datetime
 
 global _version_
-_version_ = "0.1.0"
+_version_ = "0.9.0"
 
 global OPEN_DATE_ACTIVE
 OPEN_DATE_ACTIVE = True
@@ -18,6 +18,8 @@ global DATE
 DATE = "2021-11-12"
 
 GUILD_ID = 831170627901587466
+Role_Message_ID = 0
+
 
 status = ['Magic 8Ball', 'Converter', 'CoinFlipper', 'Tic-Tac-Toe']
 
