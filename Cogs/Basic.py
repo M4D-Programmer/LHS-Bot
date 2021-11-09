@@ -16,7 +16,7 @@ NickRules = [
 
 global Rules
 Rules = [
-    "**Rule 1:** Be respectful to everyone. This means DO NOT make racist remarks, or send rude things that may make people uncomfortable. We're all high schoolers here so let's act like it\n",
+    "**Rule 1:** Be respectful to everyone. This means DO NOT make racist remarks, or send rude comments that may make people uncomfortable. We're all high schoolers here so let's act like it\n",
     "**Rule 2:** No NSFW in general channels! Some people can get uncomfortable with NSFW. If you want to see/post any NSFW content, you can in the NSFW channel\n",
     "**Rule 3:** Don't spam or purposely annoy anyone. Refrain from spamming bots, @ everyone, @ admin, and @ bot-dev @ moderator tags. Only use them if there is an issue or a bug\n",
     "**Rule 4:** Keep discussions relevant to channel topics and guidelines. If you need help, please ask for it in a help channel. Not in general chats\n",
