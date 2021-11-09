@@ -1,7 +1,7 @@
 author = "M4D-Programmer"
-version = "0.1.1"
+version = "0.9.7"
 
-Msg = f"LHS-Bot has been updated to 0.1.1! Now better than ever!"
+Msg = f""
 
 Cogs = ["8Ball", "AdminCommands", 
         "Basic", "Bot-to-Bot", 
