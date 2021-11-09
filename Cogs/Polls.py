@@ -9,9 +9,9 @@ class Suggestion(commands.Cog):
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction, user):
         try:
-            print('reaction added')
+            #print('reaction added')
             #print(str(reaction))
-            print(user)
+            #print(user)
             #print(user.roles)
             #if user == self.client:
             #    print("returned")
@@ -19,13 +19,13 @@ class Suggestion(commands.Cog):
             for role in user.roles:
                 #print(role.name)
                 if role.name == "admin" or role.name == "bot-dev":
-                    print("admin detected")
+                    #print("admin detected")
                     if reaction == "\u2705" or reaction == "✅":
-                        print("Approved")
+                        #print("Approved")
                         approved = True
                         return approved
                     elif reaction == "\u274c" or reaction == "❌":
-                        print("Not Approved")
+                        #print("Not Approved")
                         approved = False
                         return approved
             else:
