@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 
-class Example(commands.Cog):
+class Spam(commands.Cog):
     def __init__(self, client):
         self.client = client
     
@@ -39,4 +39,4 @@ class Example(commands.Cog):
     '''
     
 def setup(client):
-    client.add_cog(Example(client))
+    client.add_cog(Spam(client))
