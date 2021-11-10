@@ -8,6 +8,6 @@ Cogs = ["8Ball", "AdminCommands",
         "Censor", "CoinFlip", 
         "Math", "Music", 
         "Open_Date", "Polls", 
-        "Roles", "TicTacToe", 
+        "Roles", "Spam", "TicTacToe", 
         "Verification", "Vocab_Definer", 
         "WheelOfOptions"]
