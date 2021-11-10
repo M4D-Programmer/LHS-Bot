@@ -20,7 +20,7 @@ class Example(commands.Cog):
                 await message.author.add_roles(role)
                 await message.author.send(f"You have been muted for 30 seconds due to spamming a channel.")
                 await asyncio.sleep(30)
-                await message.author.add_roles(role)
+                await message.author.remove_roles(role)
                 await message.author.send(f"You have been un-muted.")
     
     @commands.Cog.listener()
