@@ -6,6 +6,7 @@ import os
 from itertools import cycle
 import json
 import logging
+import asyncio
 from datetime import datetime
 
 global _version_
@@ -297,8 +298,15 @@ for filename in os.listdir('./Cogs'):
 @commands.check(is_it_me)
 async def update(ctx):
     global _version_
-    message = await ctx.send(f"Updating..")
+    message = await ctx.send(f"Updating...")
     async with ctx.typing():
+        for i in range(40):
+            await asyncio.sleep(i)
+            await message.edit(content="Preparing.")
+            await asyncio.sleep(i)
+            await message.edit(content="Preparing..")
+            await asyncio.sleep(i)
+            await message.edit(content="Preparing...")
         try:
             await message.edit(content="[          ]")
             for filename in os.listdir('./Cogs'):
