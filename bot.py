@@ -269,7 +269,7 @@ async def showfile(ctx, filename):
                 await ctx.send(f"```python\n{data}```")
             else:
                 await ctx.send(f"`{data}`")
-            break
+            return
         except:
             print("...")
             with open(f"Cogs/{filename}", "r") as f:
@@ -280,7 +280,7 @@ async def showfile(ctx, filename):
                 await ctx.send(f"```python\n{data}```")
             else:
                 await ctx.send(f"`{data}`")
-            break
+            return
         finally:
             await ctx.send(f"File not found")
 
