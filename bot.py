@@ -262,7 +262,7 @@ async def showfile(ctx, filename):
         try:
             print(".")
             with open(f"{filename}", "r") as f:
-                data = f.readlines()
+                data = f.read()
                 f.close()
             print("..")
             if filename.endswith(".py"):
@@ -273,7 +273,7 @@ async def showfile(ctx, filename):
         except:
             print("...")
             with open(f"Cogs/{filename}", "r") as f:
-                data = f.readlines()
+                data = f.read()
                 f.close()
             print("....")
             if filename.endswith(".py"):
