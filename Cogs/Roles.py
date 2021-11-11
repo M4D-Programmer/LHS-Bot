@@ -4,9 +4,6 @@ from colour import Color
 from discord import Color as col
 import asyncio
 
-global Role_Message_ID
-from bot import Role_Message_ID
-
 global GUILD
 GUILD = None
 global COLORS
@@ -29,7 +26,7 @@ class Roles(commands.Cog):
         if str(message.channel.name) == 'roles':
             if message.author.id == 694589350733807666:
                 return
-            #print(message.content)
+            print(message.content)
             await asyncio.sleep(2)
             await message.delete()
         else:
@@ -43,11 +40,10 @@ class Roles(commands.Cog):
         Channel = self.client.get_channel(831180525724368937)
         #print("Got Channel")
         if reaction.message.channel.id == Channel:
-            #print("Returned")
+            print("Returned")
             return
         else:
-            if reaction.message.id != Role_Messaeg_ID:
-                return
+            print("Not returned")
             if reaction.emoji == "🐦":
                 role = discord.utils.get(user.guild.roles, name="Tweet Alerts")
                 await user.add_roles(role)
@@ -72,8 +68,6 @@ class Roles(commands.Cog):
             #print("Returned")
             return
         else:
-            if reaction.message.id != Role_Messaeg_ID:
-                return
             if reaction.emoji == "🐦":
                 role = discord.utils.get(user.guild.roles, name="Tweet Alerts")
                 await user.remove_roles(role)  # PUT IN ON_REACTION_REMOVE
@@ -90,6 +84,7 @@ class Roles(commands.Cog):
     @commands.command(hidden=True)
     @commands.has_permissions(administrator=True)
     async def roles(self, ctx):
+        msg = ""
         message = await ctx.channel.send("""`SELECT A COLOR FOR A COLORED ROLE`\n\nblack\nred\norange\nyellow\ngreen\nblue\nviolet\nmagenta\nwhite\ncyan\nlime\n
 Type !color `colorname` **IN THIS CHANNEL** to receive the appropriate color role
 To remove the color, just do the same command, !color `colorname`
