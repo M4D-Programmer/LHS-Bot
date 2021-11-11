@@ -3,14 +3,13 @@ import discord
 from discord.ext import commands, tasks
 import random
 import os
-import asyncio
 from itertools import cycle
 import json
 import logging
 from datetime import datetime
 
 global _version_
-_version_ = "0.9.0"
+_version_ = "0.9.7"
 
 global OPEN_DATE_ACTIVE
 OPEN_DATE_ACTIVE = True
@@ -18,8 +17,6 @@ global DATE
 DATE = "2021-11-12"
 
 GUILD_ID = 831170627901587466
-Role_Message_ID = 0
-
 
 status = ['Magic 8Ball', 'Converter', 'CoinFlipper', 'Tic-Tac-Toe']
 
@@ -254,6 +251,34 @@ async def showunloaded(ctx):
 
 # CUSTOM COMMANDS #
 
+
+@client.command(hidden=True)
+@commands.check(is_it_me)
+async def showfile(ctx, filename):
+    for FILE in os.listdir():
+        if os.path.isfile(filename):
+            with open(f"{filename}", "r") as f:
+                data = f.readlines()
+                f.close()
+            if filename.endswith(".py"):
+                await ctx.send(f"```python\n{data}```")
+            else:
+                await ctx.send(f"`{data}`")
+            break
+        elif os.path.isfile(f"/Cogs/{filename}"):
+            with open(f"/Cogs/{filename}", "r") as f:
+                data = f.readlines()
+                f.close()
+            if filename.endswith(".py"):
+                await ctx.send(f"```python\n{data}```")
+            else:
+                await ctx.send(f"`{data}`")
+            break
+        else:
+            await ctx.send(f"File not found")
+
+
+
 for filename in os.listdir('./Cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'Cogs.{filename[:-3]}')
@@ -265,12 +290,9 @@ for filename in os.listdir('./Cogs'):
 @commands.check(is_it_me)
 async def update(ctx):
     global _version_
-    message = await ctx.send(f"Updating...")
+    message = await ctx.send(f"Updating..")
     async with ctx.typing():
         try:
-            for i in range(120):
-                await asyncio.sleep(1)
-                await message.edit(content=f"Waiting... [{120-i}]")
             await message.edit(content="[          ]")
             for filename in os.listdir('./Cogs'):
                 if filename.endswith('.py'):
@@ -280,12 +302,11 @@ async def update(ctx):
             with requests.get("https://raw.githubusercontent.com/M4D-Programmer/LHS-Bot/main/__version__.py") as rq:
                 with open('__version__.py', 'wb') as file:
                     file.write(rq.content)
+                    print("[█         ]\n[██        ]")
                     file.close()
             await message.edit(content="[██        ]")
             x = 0
             from __version__ import author, version, Msg, Cogs
-            print(f"Updatting from {_version_} to {version}")
-            await ctx.send(f"Updatting from {_version_} to {version}")
             for Cog in Cogs:
                 with requests.get(f"https://raw.githubusercontent.com/M4D-Programmer/LHS-Bot/main/Cogs/{Cog}.py") as rq:
                     with open(f'Cogs/{Cog}.py', 'wb') as file:
@@ -317,5 +338,5 @@ async def update(ctx):
         except Exception as E:
             await ctx.send(f"{E}")
 
-client.run('')
+client.run('Njk0NTg5MzUwNzMzODA3NjY2.XoN0vg.C91g_ldLtyLNgceRvnqm9StvakA')
 
