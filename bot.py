@@ -18,8 +18,6 @@ DATE = "2021-11-12"
 
 GUILD_ID = 831170627901587466
 
-Role_Message_ID = 907859936619413547
-
 status = ['Magic 8Ball', 'Converter', 'CoinFlipper', 'Tic-Tac-Toe']
 
 cogs_loaded = []
@@ -258,26 +256,30 @@ async def showunloaded(ctx):
 @commands.check(is_it_me)
 async def showfile(ctx, filename):
     for FILE in os.listdir():
+        print("Scanning...")
         if os.path.isfile(filename):
+            print(".")
             with open(f"{filename}", "r") as f:
                 data = f.readlines()
                 f.close()
+            print("..")
             if filename.endswith(".py"):
                 await ctx.send(f"```python\n{data}```")
             else:
                 await ctx.send(f"`{data}`")
             break
         elif os.path.isfile(f"/Cogs/{filename}"):
+            print("...")
             with open(f"/Cogs/{filename}", "r") as f:
                 data = f.readlines()
                 f.close()
+            print("....")
             if filename.endswith(".py"):
                 await ctx.send(f"```python\n{data}```")
             else:
                 await ctx.send(f"`{data}`")
             break
-        else:
-            await ctx.send(f"File not found")
+    await ctx.send(f"File not found")
 
 
 
