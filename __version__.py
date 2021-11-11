@@ -1,5 +1,5 @@
 author = "M4D-Programmer"
-version = "0.9.6"
+version = "0.9.7"
 
 Msg = f""
 
