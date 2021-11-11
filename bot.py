@@ -281,7 +281,8 @@ async def showfile(ctx, filename):
             else:
                 await ctx.send(f"`{data}`")
             break
-    await ctx.send(f"File not found")
+        finally:
+            await ctx.send(f"File not found")
 
 
 
