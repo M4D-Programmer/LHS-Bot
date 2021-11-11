@@ -259,7 +259,7 @@ async def showunloaded(ctx):
 async def showfile(ctx, filename):
     for FILE in os.listdir():
         print("Scanning...")
-        if os.path.isfile(filename):
+        try:
             print(".")
             with open(f"{filename}", "r") as f:
                 data = f.readlines()
@@ -270,9 +270,9 @@ async def showfile(ctx, filename):
             else:
                 await ctx.send(f"`{data}`")
             break
-        elif os.path.isfile(f"/Cogs/{filename}"):
+        except:
             print("...")
-            with open(f"/Cogs/{filename}", "r") as f:
+            with open(f"Cogs/{filename}", "r") as f:
                 data = f.readlines()
                 f.close()
             print("....")
