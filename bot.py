@@ -18,6 +18,8 @@ DATE = "2021-11-12"
 
 GUILD_ID = 831170627901587466
 
+Role_Message_ID = 907859936619413547
+
 status = ['Magic 8Ball', 'Converter', 'CoinFlipper', 'Tic-Tac-Toe']
 
 cogs_loaded = []
