@@ -300,13 +300,9 @@ async def update(ctx):
     global _version_
     message = await ctx.send(f"Updating...")
     async with ctx.typing():
-        for i in range(40):
+        for i in range(120):
             await asyncio.sleep(i)
-            await message.edit(content="Preparing.")
-            await asyncio.sleep(i)
-            await message.edit(content="Preparing..")
-            await asyncio.sleep(i)
-            await message.edit(content="Preparing...")
+            await message.edit(content=f"Waiting...[{120-i}]")
         try:
             await message.edit(content="[          ]")
             for filename in os.listdir('./Cogs'):
